@@ -35,3 +35,9 @@
 - `spring.datasource.username` specify the username
 - `spring.datasource.password` specify the password
 - spring will automatically connect to jdbc if specified in url
+
+# Entity Class
+- Java class that is mapped to database table
+- Entity class should be annotated with `@Entity`
+- Must have public or protected no-argument constructor
+  - Class can have other constructor
