@@ -41,3 +41,31 @@
 - Entity class should be annotated with `@Entity`
 - Must have public or protected no-argument constructor
   - Class can have other constructor
+- `@Column` is used to specify to which column the data should be added
+- `@Id` added for primary key
+
+# Data Access Object (DAO)
+- it is common design pattern
+- Responsible for interacting with database
+
+# JPA Entity Manager
+- JPA Entity Manager is the main component for saving/retrieving entities
+- JPA Entity Manager needs a Data Source
+- Data Source defines database connection info
+- JPA Entity Manager and Data Source are automatically created by Spring Boot
+- We can autowire/inject JPA Entity Manager into DAO
+
+# EntityManager vs JpaRepository
+- if you need **low-level control and flexibility**, use **EntityManager**
+- If you want **high-level of abstraction**, use **JpaRepository**
+
+# `@Transactional`
+- Spring provides an `@Transactional` annotation
+- Automatically begin and end a transaction for your JPA code no need to explicitly do this
+
+# `@Repository`
+- `@Repository` sub annotation of `@Component`
+- Applied to DAO implementations
+- Spring will automatically register the DAO implementation
+  - It uses component-scanning
+- Spring also provides translation of ant JDBC related exceptions
