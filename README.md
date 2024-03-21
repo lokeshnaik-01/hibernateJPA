@@ -75,3 +75,4 @@
 - Similar to concept to SQL
   - where, like, order, join etc
 - JPQL is based on **entity names** and **entity fields** not on table names
+- `entityManager.createQuery("SELECT * FROM Student").executeUpdate()` we can use this here we give the whole sql query
