@@ -16,6 +16,7 @@ public class StudentDAOImpl implements StudentDAO{
 
     @Autowired
     public StudentDAOImpl(EntityManager entityManager) {
+        System.out.println("Constructor in DAO Impl " + entityManager);
         this.entityManager = entityManager;
     }
 
