@@ -10,12 +10,14 @@ import org.springframework.stereotype.Repository;
 public class StudentDAOImpl implements StudentDAO{
     /// define field for entity manager
 
+    // JPA Entity Manager and Data Source are automatically created by Spring Boot
     private EntityManager entityManager;
 
     // inject entity manager using constructor injection
 
     @Autowired
     public StudentDAOImpl(EntityManager entityManager) {
+        // injecting the EntityManager
         System.out.println("Constructor in DAO Impl " + entityManager);
         this.entityManager = entityManager;
     }
