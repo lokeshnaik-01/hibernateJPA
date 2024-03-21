@@ -69,3 +69,9 @@
 - Spring will automatically register the DAO implementation
   - It uses component-scanning
 - Spring also provides translation of ant JDBC related exceptions
+
+# JPA Query Language (JPQL)
+- Query Language for retrieving objects
+- Similar to concept to SQL
+  - where, like, order, join etc
+- JPQL is based on **entity names** and **entity fields** not on table names

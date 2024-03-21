@@ -25,8 +25,24 @@ public class CrudDemoApplication {
 			// createStudentAndRead(studentDAO);
 			// createMultipleStudents(studentDAO);
 			// queryForStudents(studentDAO);
-			queryForStudentsByLastName(studentDAO);
+			// queryForStudentsByLastName(studentDAO);
+			updateStudent(studentDAO);
 		};
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+		// retrieve student based on id
+		int studentId = 1;
+		Student myStudent = studentDAO.findById(studentId);
+
+		// change first name
+		System.out.println("Update student");
+		// we use the setter method
+		myStudent.setFirstName("Qwerty");
+		// update student
+        studentDAO.update(myStudent);
+		// display updated student
+		System.out.println("Updates student: " + myStudent);
 	}
 
 	private void queryForStudentsByLastName(StudentDAO studentDAO) {
@@ -83,7 +99,6 @@ public class CrudDemoApplication {
 		Student myStudent = studentDAO.findById(theId);
 
 		System.out.println("Found student: " + myStudent);
-
 
 	}
 }
