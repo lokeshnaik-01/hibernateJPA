@@ -2,9 +2,12 @@ package com.lokesh.crudDemo.dao;
 
 import com.lokesh.crudDemo.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class StudentDAOImpl implements StudentDAO{
@@ -35,5 +38,23 @@ public class StudentDAOImpl implements StudentDAO{
         // pass the class and the primary key
         Student tempStudent = entityManager.find(Student.class, id);
         return tempStudent;
+    }
+
+    public List<Student> findAll() {
+        // create query
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student order by firstName asc", Student.class);
+        // Student and firstName are from JSP
+        // return query results
+        return theQuery.getResultList();
+    }
+
+    @Override
+    public List<Student> findByLastName(String theLastName) {
+        // create query
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student WHERE lastName=:theData", Student.class);
+        // set query parameters
+        theQuery.setParameter("theData", theLastName);
+        // return result
+        return theQuery.getResultList();
     }
 }

@@ -8,6 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import javax.swing.text.Style;
+import java.util.List;
+
 @SpringBootApplication
 public class CrudDemoApplication {
 
@@ -19,9 +22,29 @@ public class CrudDemoApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		System.out.println("Inside cmd liner runner");
 		return runner -> {
-			createStudentAndRead(studentDAO);
+			// createStudentAndRead(studentDAO);
 			// createMultipleStudents(studentDAO);
+			// queryForStudents(studentDAO);
+			queryForStudentsByLastName(studentDAO);
 		};
+	}
+
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+		// get a list of students
+		List<Student> theStudents = studentDAO.findByLastName("Naik");
+		// display list of students
+		for(Student tempStudent: theStudents) {
+			System.out.println(tempStudent);
+		}
+	}
+
+	private void queryForStudents(StudentDAO studentDAO) {
+		// get a list of students
+		List<Student> theStudents = studentDAO.findAll();
+		// display list of students
+		for(Student tempStudent: theStudents) {
+			System.out.println(tempStudent);
+		}
 	}
 
 	private void createMultipleStudents(StudentDAO studentDAO) {
